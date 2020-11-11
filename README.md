@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+# Data visualization from stochastique algorithms
+
+The current project allows to visualize data from stochastique algorithms.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,7 +72,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Data-Visualization-Stochastique-Algorithms
-The current project allows to visualize data from stochastique algorithms.
->>>>>>> e1130552c0239b6a355adcf6af52dbdf1712b68f
