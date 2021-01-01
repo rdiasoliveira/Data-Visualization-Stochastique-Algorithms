@@ -1,59 +1,50 @@
 import React from 'react';
+import defaultSettings from './datasource/DefaultSettings'
 import Menu from './components/menu/Menu'
-import Settings from './components/dialog/Settings'
-import Option from './components/dialog/Option'
-import SettingsOptions from './datasource/SettingsOptions'
+import Box from '@material-ui/core/Box';
 
 export default function App() {
 
-	const settingsOptions = SettingsOptions.data;
+	const settings = defaultSettings.data;
 
-	const [isSettingsDialogActive, setSettingsDialogActive] = React.useState(false);
-	const [isOptionDialogActive, setOptionDialogActive] = React.useState(false);
-	const [optionDialogContent, setOptionDialogContent] = React.useState(null);
-
-	const handleSetSettingsDialogActive = () => {
-		setSettingsDialogActive(true);
-	};
-
-	const handleSetSettingsDialogInactive = () => {
-		setSettingsDialogActive(false);
-	};
-
-	const handleSetOptionDialogActive = (option) => {
-		setOptionDialogContent(option);
-		setOptionDialogActive(true);
-	}
-
-	const handleSetOptionDialogInactive = () => {
-		setOptionDialogActive(false);
-	}
+	const [dataPath, setDataPath] = React.useState(settings.defaultDataPath);
+	const [delimiter, setDelimiter] = React.useState(settings.defaultDelimiter);
+	const [filePattern, setFilePattern] = React.useState(settings.defaultFilePattern);
+	const [ignoreFirstLine, setIgnoreFirstLine] = React.useState(settings.defaultIgnoreFirstLine);
+	const [data, setData] = React.useState(null);
 
 	React.useEffect(() => {
-		fetch("http://127.0.0.1:8080/1")
-			.then(res => res.json())
-			.then(
-				(result) => {
-					console.log(result);
-				},
-				// Remarque : il est important de traiter les erreurs ici
-				// au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-				// des exceptions provenant de réels bugs du composant.
-				(error) => {
-					console.log(error);
-				}
-			)
-	}, []);
+		const config = {
+			"dataPath": dataPath,
+			"delimiter": delimiter,
+			"filePattern": filePattern,
+			"ignoreFirstLine": ignoreFirstLine
+		};
+		fetch("http://127.0.0.1:8080/getData/" + encodeURIComponent(JSON.stringify(config)))
+			.then(async response => {
+				if(response.status === 400) throw new Error(await response.json());
+				if(response.status === 500) throw new Error("500 (Internal Server Error)");
+				return response.json();
+			})
+			.then(response => {
+				setData(response);
+				console.log(response);
+			})
+			.catch((error) => console.error(error))
+	}, [dataPath, delimiter, filePattern, ignoreFirstLine]);
 
 	return (
-		<Menu setSettingsDialogActive={handleSetSettingsDialogActive}>
-			<Settings isSettingsDialogActive={isSettingsDialogActive}
-				setSettingsDialogInactive={handleSetSettingsDialogInactive}
-				setOptionDialogActive={handleSetOptionDialogActive}
-				settingsOptions={settingsOptions} />
-			<Option isOptionDialogActive={isOptionDialogActive}
-				setOptionDialogInactive={handleSetOptionDialogInactive}
-				optionDialogContent={optionDialogContent} />
-		</Menu>
+		<Box>
+			<Menu
+				dataPath={dataPath}
+				delimiter={delimiter}
+				filePattern={filePattern}
+				ignoreFirstLine={ignoreFirstLine}
+				setDataPath={setDataPath}
+				setDelimiter={setDelimiter}
+				setFilePattern={setFilePattern}
+				setIgnoreFirstLine={setIgnoreFirstLine}
+			/>
+		</Box>
 	);
 }
