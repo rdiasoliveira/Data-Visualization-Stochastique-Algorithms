@@ -1,74 +1,31 @@
-# Data visualization from stochastique algorithms
+## Data Visualization Project
 
-The current project allows to visualize data from stochastique algorithms.
+> :warning: `Antes de começar a execução é recomendado começar por verificar que as portas 3000 e 8080 estão livres e em seguida prosseguir com a execução da API antes da execução deste projeto :`
+> [https://github.com/rdiasoliveira/API-Data-Visualization-Stochastique-Algorithms](https://github.com/rdiasoliveira/API-Data-Visualization-Stochastique-Algorithms)
 
-# Getting Started with Create React App
+Para executar a aplicação é preciso realizar na pasta atual do projeto os seguintes comandos em ordem :
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### :computer: npm install
 
-## Available Scripts
+O comando `npm install` instala todas as `dependencies` necessárias no atual projeto. Entre as quais :
 
-In the project directory, you can run:
+1. MaterialUI
+2. React-Color
+3. Plotly
 
-### `npm start`
+### :computer: npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O comando `npm start` inicializa o projeto.
+A aplicação é acessível no endereço [http://localhost/:3000](http//localhost:3000) e pode ser visualizada diretamente no navegador web.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+------
 
-### `npm test`
+##### Docker
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A aplicação pode igualmente ser inicializada a partir de uma imagem docker.
+Nos links seguintes, podem encontrar as imagens docker da API e da aplicação :
 
-### `npm run build`
+- [Imagem da API necessária para a utilização da aplicação atual.](https://hub.docker.com/r/edcandido8/api-data-vizualisation)
+- [Imagem da aplicação atual.](https://hub.docker.com/r/edcandido8/data-vizualisation-app)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> :warning: `O guia de criação e execução destas imagens estão no README desses mesmos links.`
