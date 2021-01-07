@@ -72,7 +72,6 @@ export default function Menu(props) {
     }
 
     const handleOptionSetTmpIgnoreFirstLine = (tmpIgnoreFirstLine) => {
-        console.log(tmpIgnoreFirstLine);
         setTmpIngoreFirstLine(tmpIgnoreFirstLine);
         setOptionDialogActive(false);
     }
@@ -86,12 +85,12 @@ export default function Menu(props) {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     setOptionDialogForm(
                         <OptionSelectFieldForm optionContent={optionContent} formSubmit={handleOptionSetTmpDataPath} items={result} defaultSelect={tmpDataPath} />
                     );
                     setOptionDialogContent(optionContent);
                     setOptionDialogActive(true);
+                    console.log(result);
                 },
                 (error) => {
                     console.log(error);

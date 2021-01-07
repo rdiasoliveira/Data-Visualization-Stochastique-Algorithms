@@ -1,6 +1,7 @@
 import React from 'react';
 import defaultSettings from './datasource/DefaultSettings'
 import Menu from './components/menu/Menu'
+import VizualisationDataForm from './components/forms/VizualisationDataForm'
 import Box from '@material-ui/core/Box';
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
 	const [delimiter, setDelimiter] = React.useState(settings.defaultDelimiter);
 	const [filePattern, setFilePattern] = React.useState(settings.defaultFilePattern);
 	const [ignoreFirstLine, setIgnoreFirstLine] = React.useState(settings.defaultIgnoreFirstLine);
-	const [data, setData] = React.useState(null);
+	const [data, setData] = React.useState({ "directories": [] });
 
 	React.useEffect(() => {
 		const config = {
@@ -27,8 +28,8 @@ export default function App() {
 				return response.json();
 			})
 			.then(response => {
-				setData(response);
 				console.log(response);
+				setData(response);
 			})
 			.catch((error) => console.error(error))
 	}, [dataPath, delimiter, filePattern, ignoreFirstLine]);
@@ -44,6 +45,9 @@ export default function App() {
 				setDelimiter={setDelimiter}
 				setFilePattern={setFilePattern}
 				setIgnoreFirstLine={setIgnoreFirstLine}
+			/>
+			<VizualisationDataForm
+				data={data}
 			/>
 		</Box>
 	);
